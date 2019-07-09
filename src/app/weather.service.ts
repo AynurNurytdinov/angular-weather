@@ -5,19 +5,14 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class WeatherService {
-  apiKey = 'ff3d82a6bb7157490990656e71dd81ac';
-  units = 'metric';
   url: string;
 
   constructor(private http: HttpClient) {
-    this.url = 'http://api.openweathermap.org/data/2.5/forecast?';
+    this.url = 'https://gist.githubusercontent.com/' +
+      'anonymous/feb1b31516f3e36a14b29657701f18d2/raw/eaa544aed7e3bdee37c6caa2a515f1d4c38fbd4f/weather.json';
   }
 
-  getWeatherByName(city, lang) {
-    return this.http.get(`${this.url}q=${city}&units=${this.units}&lang=${lang}&appid=${this.apiKey}`);
-  }
-
-  getWeatherByLocation(lat, lon, lang) {
-    return this.http.get(`${this.url}lat=${lat}&lon=${lon}&units=${this.units}&lang=${lang}&appid=${this.apiKey}`);
+  getWeather() {
+    return this.http.get<any>(this.url);
   }
 }

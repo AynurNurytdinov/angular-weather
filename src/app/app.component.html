@@ -1,6 +1,43 @@
-<div>
-  <div class="header"></div>
-  <div class="main"></div>
+<div class="container">
+  <div class="header">
+    {{selectedDay?.moment}}, {{selectedDay?.dt | date:'d MMMM y'}}
+  </div>
+  <div class="main">
+    {{weather.descriptionRU[weather.descriptionENG.indexOf(selectedDay?.weather[0].description)]}}
+    <div class="circle">
+      <object *ngIf="selectedDay?.weather[0].id === 802"
+        type="image/svg+xml"
+        data="../assets/scattered_clouds.svg">
+      </object>
+      <object  *ngIf="selectedDay?.weather[0].id === 800"
+        type="image/svg+xml"
+        data="../assets/clear_sky.svg">
+      </object>
+      <object  *ngIf="selectedDay?.weather[0].id === 500"
+        type="image/svg+xml"
+        data="../assets/light_rain.svg">
+      </object>
+    </div>
+    <span class="temp">{{math.round(selectedDay?.temp.day - 273.15)}}°</span>
+    <span>Казань</span>
+  </div>
   <div class="action">
+    <div class="tab" *ngFor="let day of days; let i = index" (click)="slide(i)">
+      <object *ngIf="day.weather[0].id === 802"
+        type="image/svg+xml"
+        data="../assets/scattered_clouds.svg">
+      </object>
+      <object  *ngIf="day.weather[0].id === 800"
+        type="image/svg+xml"
+        data="../assets/clear_sky.svg">
+      </object>
+      <object  *ngIf="day.weather[0].id === 500"
+        type="image/svg+xml"
+        data="../assets/light_rain.svg">
+      </object>
+      <div>
+        {{day.dt | date:'d MMMM'}}
+      </div>
+    </div>
   </div>
 </div>

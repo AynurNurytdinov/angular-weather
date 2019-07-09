@@ -1,9 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { WeatherService } from './weather.service';
 import { HttpClientModule } from '@angular/common/http';
+import { registerLocaleData } from '@angular/common';
+import localeRu from '@angular/common/locales/ru';
+
+registerLocaleData(localeRu);
 
 @NgModule({
   declarations: [
@@ -13,7 +17,10 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     HttpClientModule
   ],
-  providers: [WeatherService],
+  providers: [
+    WeatherService,
+    { provide: LOCALE_ID, useValue: 'ru-RU' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
