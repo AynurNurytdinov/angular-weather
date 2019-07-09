@@ -1,6 +1,7 @@
 .container {
   font-family: 'Calibri'
 }
+
 .header {
   background-color: #3eb1df;
   color: white;
@@ -9,16 +10,21 @@
   justify-content: center;
   align-items: center;
   height: 8vh;  
+  width: 100%;
 }
 
 .main {
+  position: relative;
+  overflow: hidden;
   color: white;
   font-size: 20px;
   background-color: #21a5da;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   height: 72vh; 
+  width: 100vw;
 }
 
 .main .temp {
@@ -39,6 +45,8 @@
   align-items: center;
   cursor: pointer;
 }
+/* left: 44.5vw; 
+left: 45.8vw; */
 
 .tab object {
   width: 7em;
@@ -46,13 +54,6 @@
 
 .tab.active{
 	background-color:#1c9dd1;
-}
-
-button {
-  color: white;
-  width: 100%;
-  background-color: #3eb1df;
-  border: none;
 }
 
 .circle {
@@ -76,4 +77,22 @@ button {
 
 .circle object {
   width: 5em;
+}
+
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  height: 80vh;
+} 
+
+.slide {
+  position: absolute;
+}
+
+.description {
+  margin-top: 2vh;
+} 
+
+.city {
+  margin-bottom: 2vh;
 }

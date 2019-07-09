@@ -1,16 +1,52 @@
 import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { WeatherService } from './weather.service';
+import {
+  trigger,
+  transition,
+  query,
+  style,
+  animate,
+  group
+} from '@angular/animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
+  animations: [
+    trigger('slider', [
+      transition(':increment', group([
+        query(':enter', [
+          style({
+            left: '100%'
+          }),
+          animate('0.3s ease-out', style('*'))
+        ], { optional: true }),
+        query(':leave', [
+          animate('0.3s ease-out', style({
+            left: '-100%'
+          }))
+        ], { optional: true })
+      ])),
+      transition(':decrement', group([
+        query(':enter', [
+          style({
+            left: '-100%'
+          }),
+          animate('0.3s ease-out', style('*'))
+        ], { optional: true }),
+        query(':leave', [
+          animate('0.3s ease-out', style({
+            left: '100%'
+          }))
+        ], { optional: true })
+      ])),
+    ])
+  ],
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit {
   math = Math;
-  selectedDay;
-  days = [];
-  side = 'left';
+  data = [];
   currentTab = 0;
   weather = {
     descriptionENG: [
@@ -30,9 +66,9 @@ export class AppComponent implements AfterViewInit {
         res.list.map((day, i) => {
           day.dt = new Date(day.dt * 1000);
           day.moment = this.dayMoment[i];
+          day.temp.day = this.math.round(day.temp.day - 273.15);
         });
-        this.selectedDay = res.list[0];
-        this.days = res.list;
+        this.data = res.list;
       },
       (err) => {
         console.log(err);
@@ -40,12 +76,14 @@ export class AppComponent implements AfterViewInit {
     );
   }
 
+  get currentDay() {
+    return [this.data[this.currentTab]];
+  }
+
   slide(n) {
-    this.side = n > this.currentTab ? 'right' : 'left';
     this.currentTab = n;
-    this.selectedDay = this.days[n];
     for (let i = 0; i < document.getElementsByClassName('tab').length; i++) {
-      document.getElementsByClassName('tab')[i].className = i === n ? 'tab active ' : 'tab';
+      document.getElementsByClassName('tab')[i].className = i === n ? 'tab active' : 'tab';
     }
   }
 }
