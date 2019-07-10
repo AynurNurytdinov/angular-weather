@@ -1,49 +1,26 @@
 <div class="container">
-
-
-  <div [@slider]="currentTab"  class="slider-container">
+  <div [@slider]="currentTab"  class="slider-header">
     <div class="slide"  *ngFor="let day of currentDay">
       <div class="header">
         {{day?.moment}}, {{day?.dt | date:'d MMMM y'}}
       </div>
+    </div>
+  </div>
+  <div [@slider2]="currentTab"  class="slider-main">
+    <div class="slide"  *ngFor="let day of currentDay">
       <div class="main">
         <span class="description">{{weather.descriptionRU[weather.descriptionENG.indexOf(day?.weather[0].description)]}}</span>
         <div class="circle">
-          <object *ngIf="day?.weather[0].id === 802"
-            type="image/svg+xml"
-            data="../assets/scattered_clouds.svg">
-          </object>
-          <object  *ngIf="day?.weather[0].id === 800"
-            type="image/svg+xml"
-            data="../assets/clear_sky.svg">
-          </object>
-          <object  *ngIf="day?.weather[0].id === 500"
-            type="image/svg+xml"
-            data="../assets/light_rain.svg">
-          </object>
+          <div class="{{day?.weather[0].description.replace(' ', '-')}}"></div>
         </div>
         <span class="temp">{{day?.temp.day}}°</span>
         <span class="city">Казань</span>
       </div>
     </div>
   </div>
-  
-
-
   <div class="action">
     <div class="tab" *ngFor="let day of data; let i = index" (click)="slide(i)">
-      <object *ngIf="day.weather[0].id === 802"
-        type="image/svg+xml"
-        data="../assets/scattered_clouds.svg">
-      </object>
-      <object  *ngIf="day.weather[0].id === 800"
-        type="image/svg+xml"
-        data="../assets/clear_sky.svg">
-      </object>
-      <object  *ngIf="day.weather[0].id === 500"
-        type="image/svg+xml"
-        data="../assets/light_rain.svg">
-      </object>
+      <div class="{{day.weather[0].description.replace(' ', '-')}}"></div>
       <div>
         {{day.dt | date:'d MMMM'}}
       </div>

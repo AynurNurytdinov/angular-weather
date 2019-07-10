@@ -1,5 +1,5 @@
 .container {
-  font-family: 'Calibri'
+  font-family: 'Calibri Light'
 }
 
 .header {
@@ -10,25 +10,25 @@
   justify-content: center;
   align-items: center;
   height: 8vh;  
-  width: 100%;
+  width: 100vw;
+  font-size: 18px;
 }
 
 .main {
   position: relative;
   overflow: hidden;
   color: white;
-  font-size: 20px;
+  font-size: 24px;
   background-color: #21a5da;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   align-items: center;
   height: 72vh; 
   width: 100vw;
 }
 
 .main .temp {
-  font-size: 8em;
+  font-size: 150px;
 } 
 
 .action {
@@ -36,6 +36,7 @@
   flex-direction: row;
   height: 20vh;   
 }
+
 .tab {
   background-color: #3eb1df;
   width: 100%;
@@ -43,13 +44,29 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
   cursor: pointer;
 }
-/* left: 44.5vw; 
-left: 45.8vw; */
+
+.scattered-clouds {
+  background-image: url(../assets/scattered_clouds.svg);
+}
+
+.clear-sky {
+  background-image: url(../assets/clear_sky.svg);
+}
+
+.light-rain {
+  background-image: url(../assets/light_rain.svg);
+}
+
+.tab .scattered-clouds, .tab .clear-sky, .tab .light-rain {
+  width: 80px;
+  height: 100px;
+}
 
 .tab object {
-  width: 7em;
+  width: 4em;
 }
 
 .tab.active{
@@ -60,8 +77,8 @@ left: 45.8vw; */
 	display:flex;
 	align-items: center;
   justify-content: center;
-	width: 8em;
-	height: 8em;
+	width: 10em;
+	height: 10em;
 	margin: auto;
   border-radius: 50%;
 	clear: both;
@@ -75,15 +92,31 @@ left: 45.8vw; */
     );
 }
 
-.circle object {
-  width: 5em;
+.circle .scattered-clouds, .circle .clear-sky, .circle .light-rain {
+  margin-top: 20px;
+  width: 150px;
+  height: 180px;
 }
 
-.slider-container {
+@media only screen and (max-width: 600px) {
+  .circle .scattered-clouds, .circle .clear-sky, .circle .light-rain {
+    margin-top: 20px;
+    width: 120px;
+    height: 140px;
+  }
+}
+
+.slider-header {
   position: relative;
   overflow: hidden;
-  height: 80vh;
+  height: 8vh;
 } 
+
+.slider-main {
+  position: relative;
+  overflow: hidden;
+  height: 72vh;
+}
 
 .slide {
   position: absolute;

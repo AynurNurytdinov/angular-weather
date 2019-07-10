@@ -19,10 +19,10 @@ import {
           style({
             left: '100%'
           }),
-          animate('0.3s ease-out', style('*'))
+          animate('0.2s ease-out', style('*'))
         ], { optional: true }),
         query(':leave', [
-          animate('0.3s ease-out', style({
+          animate('0.2s ease-out', style({
             left: '-100%'
           }))
         ], { optional: true })
@@ -32,10 +32,38 @@ import {
           style({
             left: '-100%'
           }),
-          animate('0.3s ease-out', style('*'))
+          animate('0.2s ease-out', style('*'))
         ], { optional: true }),
         query(':leave', [
-          animate('0.3s ease-out', style({
+          animate('0.2s ease-out', style({
+            left: '100%'
+          }))
+        ], { optional: true })
+      ])),
+    ]),
+    trigger('slider2', [
+      transition(':increment', group([
+        query(':enter', [
+          style({
+            left: '100%'
+          }),
+          animate('0.4s ease-out', style('*'))
+        ], { optional: true }),
+        query(':leave', [
+          animate('0.4s ease-out', style({
+            left: '-100%'
+          }))
+        ], { optional: true })
+      ])),
+      transition(':decrement', group([
+        query(':enter', [
+          style({
+            left: '-100%'
+          }),
+          animate('0.4s ease-out', style('*'))
+        ], { optional: true }),
+        query(':leave', [
+          animate('0.4s ease-out', style({
             left: '100%'
           }))
         ], { optional: true })
@@ -83,7 +111,12 @@ export class AppComponent implements AfterViewInit {
   slide(n) {
     this.currentTab = n;
     for (let i = 0; i < document.getElementsByClassName('tab').length; i++) {
-      document.getElementsByClassName('tab')[i].className = i === n ? 'tab active' : 'tab';
+      const element = document.getElementsByClassName('tab')[i];
+      if ( i === n) {
+        element.classList.add('active');
+      } else {
+        element.classList.remove('active');
+      }
     }
   }
 }
