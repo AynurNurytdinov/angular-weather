@@ -1,5 +1,5 @@
 .container {
-  font-family: 'Calibri Light'
+  font-family: 'Calibri Light';
 }
 
 .header {
@@ -128,4 +128,22 @@
 
 .city {
   margin-bottom: 2vh;
+}
+
+.error {
+  height: 100vh; 
+  width: 100vw;
+  background-color: #21a5da;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 35px;
+  font-family: 'Calibri Light';
+}
+
+.error-icon {
+  width: 25vw;
+  height: 43vh; 
+  background-image: url(../assets/error.svg);
 }

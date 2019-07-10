@@ -85,12 +85,14 @@ export class AppComponent implements AfterViewInit {
     ]
   };
   dayMoment = ['Сегодня', 'Завтра', 'Послезавтра'];
+  error = false;
 
   constructor(private service: WeatherService) {}
 
   ngAfterViewInit() {
     this.service.getWeather().subscribe(
       (res) => {
+        this.error = false;
         res.list.map((day, i) => {
           day.dt = new Date(day.dt * 1000);
           day.moment = this.dayMoment[i];
@@ -99,6 +101,7 @@ export class AppComponent implements AfterViewInit {
         this.data = res.list;
       },
       (err) => {
+        this.error = true;
         console.log(err);
       }
     );
