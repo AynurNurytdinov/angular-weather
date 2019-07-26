@@ -73,7 +73,6 @@ import {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements AfterViewInit {
-  math = Math;
   data = [];
   currentTab = 0;
   weather = {
@@ -96,7 +95,7 @@ export class AppComponent implements AfterViewInit {
         res.list.map((day, i) => {
           day.dt = new Date(day.dt * 1000);
           day.moment = this.dayMoment[i];
-          day.temp.day = this.math.round(day.temp.day - 273.15);
+          day.temp.day = Math.round(day.temp.day - 273.15);
         });
         this.data = res.list;
       },
@@ -113,8 +112,9 @@ export class AppComponent implements AfterViewInit {
 
   slide(n) {
     this.currentTab = n;
-    for (let i = 0; i < document.getElementsByClassName('tab').length; i++) {
-      const element = document.getElementsByClassName('tab')[i];
+    const tab = document.getElementsByClassName('tab');
+    for (let i = 0; i < tab.length; i++) {
+      const element = tab[i];
       if ( i === n) {
         element.classList.add('active');
       } else {

@@ -1,12 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto&display=swap');
+
 .container {
-  font-family: 'Calibri Light';
+  font-family:  'Calibri Light', 'Open Sans', 'Roboto';
 }
 
 .header {
   background-color: #3eb1df;
   color: white;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 8vh;  
@@ -15,8 +16,6 @@
 }
 
 .main {
-  position: relative;
-  overflow: hidden;
   color: white;
   font-size: 24px;
   background-color: #21a5da;
@@ -33,7 +32,6 @@
 
 .action {
   display: flex;
-  flex-direction: row;
   height: 20vh;   
 }
 
@@ -65,21 +63,16 @@
   height: 100px;
 }
 
-.tab object {
-  width: 4em;
-}
-
 .tab.active{
 	background-color:#1c9dd1;
 }
 
 .circle {
-	display:flex;
+	display: flex;
 	align-items: center;
   justify-content: center;
 	width: 10em;
 	height: 10em;
-	margin: auto;
   border-radius: 50%;
 	clear: both;
 	background: radial-gradient(circle closest-side,
@@ -132,7 +125,7 @@
   justify-content: center;
   color: white;
   font-size: 35px;
-  font-family: 'Calibri Light';
+  font-family:  'Calibri Light', 'Open Sans', 'Roboto';
 }
 
 .error-icon {
